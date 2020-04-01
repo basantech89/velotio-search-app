@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
+import { Row, Col, InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 import { withRouter } from "react-router-dom";
 import { fetchCompanies } from '../../utils/apiCaller';
 import styles from './search.module.scss';
@@ -17,15 +17,15 @@ const Search = ({ history }) => {
 		} else {
 			debounce(() => {
 				fetchCompanies()
-						.then(completions => {
-							completions = completions.filter(company =>
-								company.title ?
-									company.title.toLowerCase().startsWith(searchTerm.current.value.toLowerCase()) :
-									false
-							);
-							setPredictions(completions)
-						})
-						.catch(err => console.error(err));
+					.then(completions => {
+						completions = completions.filter(company =>
+							company.title ?
+								company.title.toLowerCase().startsWith(searchTerm.current.value.toLowerCase()) :
+								false
+						);
+						setPredictions(completions)
+					})
+					.catch(err => console.error(err));
 				}, 1000)()
 		}
 	};
@@ -59,21 +59,32 @@ const Search = ({ history }) => {
 
 	return (
 		<>
-			<div className="d-flex">
-				<InputGroup size="lg">
-					<Input
-						innerRef={searchTerm}
-						onChange={getCompanies}
-						type="search"
-						className="col-6"
-						placeholder="Enter company name"
-					/>
-					<InputGroupAddon addonType="append">
-						<Modal searchTerm={searchTerm} />
-					</InputGroupAddon>
-				</InputGroup>
-				<Button color="success" className="col-2" onClick={navigateToCompanies}> View Companies </Button>
-			</div>
+			<Row className="d-grid">
+				<Col sm={12} md={8}>
+					<InputGroup size="lg">
+						<Input
+							innerRef={searchTerm}
+							onChange={getCompanies}
+							type="search"
+							className="col-6"
+							placeholder="Enter company name"
+						/>
+						<InputGroupAddon addonType="append">
+							<Modal searchTerm={searchTerm} />
+						</InputGroupAddon>
+					</InputGroup>
+				</Col>
+				<Col sm={10} md={4}>
+					<Button
+						color="success"
+						onClick={navigateToCompanies}
+						className="mt-4 mt-md-0"
+						style={{ fontSize: 18 , padding: 12 }}
+					>
+						View Companies
+					</Button>
+				</Col>
+			</Row>
 			<ShowCompanies />
 		</>
 	);
