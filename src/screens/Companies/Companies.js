@@ -51,15 +51,23 @@ const Companies = ({ companies }) => {
 
 	return (
 		<>
-			<div className="d-flex justify-content-between">
-				<NavLink to="/">
-					<Button color="success" style={{marginBottom: 30}}> Add a Company </Button>
-				</NavLink>
-				<Filter ref={filter} setFilter={setFilter} />
-				<Alert color="info">
-					Showing {companies.length ? firstItem + 1 : 0} -
-					{companies.length ? companies.length < lastItem ? companies.length : lastItem : 0} of {companies.length} entries
-				</Alert>
+			<div className="d-grid">
+				<Row>
+					<Col sm={5} lg={4}>
+						<NavLink to="/">
+							<Button color="success" style={{marginBottom: 30}}> Add a Company </Button>
+						</NavLink>
+					</Col>
+					<Col sm={7} lg={4}>
+						<Filter ref={filter} setFilter={setFilter} />
+					</Col>
+					<Col sm={10} md={6} lg={4}>
+						<Alert className="col-8 col-md-12" color="info">
+							Showing {companies.length ? firstItem + 1 : 0} -
+							{companies.length ? companies.length < lastItem ? companies.length : lastItem : 0} of {companies.length} entries
+						</Alert>
+					</Col>
+				</Row>
 			</div>
 			<Table striped responsive style={{color: theme === "light" ? 'black' : 'white'}}>
 				<thead>
@@ -73,11 +81,11 @@ const Companies = ({ companies }) => {
 					{formattedCompanies}
 				</tbody>
 			</Table>
-			<Row>
-				<Col sm={{size: 5, offset: 4}}>
+			<Row className="d-grid justify-content-center">
+				<Col xs={7} md={6} lg={{ size: 5, offset: 4 }}>
 					<Pagination totalItems={companies.length} itemsPerPage={itemsPerPage}/>
 				</Col>
-				<Col sm={3}>
+				<Col xs={6} lg={3}>
 					<InputGroup>
 						<InputGroupAddon addonType="prepend">
 							<Button color="primary" outline> Items Per Page </Button>
