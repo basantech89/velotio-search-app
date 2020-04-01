@@ -1,0 +1,44 @@
+.list {
+  padding: 0;
+}
+
+.item, .itemDark {
+  width: 50vw;
+  list-style-type: none;
+  padding: 15px;
+}
+
+.item:hover, .itemDark:hover {
+  border-radius: 2%;
+  font-size: larger;
+  transition: all 300ms ease-in;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+}
+
+.itemDark:hover {
+  color: white;
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
+
+//.alert {
+//  display: inline-block;
+//  float: right;
+//  @media (max-width: 418px) {
+//    float: left;
+//  }
+//}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.inputgrp {
+  justify-self: flex-end;
+}
