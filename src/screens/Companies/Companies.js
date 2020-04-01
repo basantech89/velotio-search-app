@@ -85,7 +85,7 @@ const Companies = ({ companies }) => {
 				<Col xs={7} md={6} lg={{ size: 5, offset: 4 }}>
 					<Pagination totalItems={companies.length} itemsPerPage={itemsPerPage}/>
 				</Col>
-				<Col xs={6} lg={3}>
+				<Col xs={7} md={5} lg={3}>
 					<InputGroup>
 						<InputGroupAddon addonType="prepend">
 							<Button color="primary" outline> Items Per Page </Button>
